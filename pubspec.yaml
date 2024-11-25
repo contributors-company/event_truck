@@ -1,6 +1,6 @@
 name: event_truck
 description: EventTruck is a lightweight, extensible, and type-safe event bus for managing event-driven architecture
-version: 1.0.0-dev
+version: 1.0.0
 
 homepage: https://www.contributors.info/repository/event_truck
 
