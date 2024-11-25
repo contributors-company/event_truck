@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the on method from the EventTruck class, for the Dart programming language.">
+  <title>on method - EventTruck class - event_truck library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">event_truck</a></li>
+    <li><a href="../../event_truck/event_truck-library.html">event_truck.dart</a></li>
+    <li><a href="../../event_truck/EventTruck-class.html">EventTruck<span class="signature">&lt;<wbr><span class="type-parameter">Event</span>&gt;</span></a></li>
+    <li class="self-crumb">on&lt;<wbr><span class="type-parameter">T extends Event</span>&gt; method</li>
+  </ol>
+  <div class="self-name">on</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="event_truck&#47;EventTruck-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-method">on&lt;<wbr><span class="type-parameter">T extends Event</span>&gt;</span> method 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+<span class="returntype"><a href="https://api.flutter.dev/flutter/dart-async/StreamSubscription-class.html">StreamSubscription</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+<span class="name ">on</span>&lt;<wbr><span class="type-parameter">T extends Event</span>&gt;(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="on-param-callback"><span class="type-annotation">void</span> <span class="parameter-name">callback</span>(<ol class="parameter-list single-line"> <li><span class="parameter" id="param-"><span class="type-annotation">T</span></span></li>
+</ol>)</span></li>
+</ol>)
+
+      
+
+    </section>
+    
+<section class="desc markdown">
+  <p>Subscribes to a stream of events of type <code>T</code> and executes the provided <code>callback</code> when an event is emitted.</p>
+<ul>
+<li><code>T</code> must extend the base <code>Event</code> type defined for this <code>EventTruck</code>.</li>
+<li><code>callback</code> is executed every time an event of type <code>T</code> is emitted.</li>
+</ul>
+<p>Returns a <code>Stream&lt;T&gt;</code> so you can chain operations if needed.</p>
+<p>Example:</p>
+<pre class="language-dart"><code class="language-dart">final truck = EventTruck&lt;Object&gt;();
+
+truck.on&lt;String&gt;((event) {
+  print('Received a string event: $event');
+});
+
+truck.add('Hello, EventTruck!');
+</code></pre>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">StreamSubscription&lt;T&gt; on&lt;T extends Event&gt;(void Function(T) callback) =&gt;
+    _streamController.stream
+        .where((event) =&gt; event is T)
+        .cast&lt;T&gt;()
+        .listen(callback);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">event_truck</a></li>
+    <li><a href="../../event_truck/event_truck-library.html">event_truck</a></li>
+    <li><a href="../../event_truck/EventTruck-class.html">EventTruck<span class="signature">&lt;<wbr><span class="type-parameter">Event</span>&gt;</span></a></li>
+    <li class="self-crumb">on&lt;<wbr><span class="type-parameter">T extends Event</span>&gt; method</li>
+</ol>
+
+    <h5>EventTruck class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    event_truck
+      1.0.0
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
