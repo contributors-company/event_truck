@@ -26,10 +26,10 @@ void main() {
     test('on() listens to events of a specific type', () async {
       final receivedEvents = <String>[];
 
-      eventTruck..on<String>(receivedEvents.add)
-
-      ..add('Test Event')
-      ..add(42); // This event should not be received
+      eventTruck
+        ..on<String>(receivedEvents.add)
+        ..add('Test Event')
+        ..add(42); // This event should not be received
 
       // Allow some time for the stream to propagate events
       await Future.delayed(Duration.zero, () {});
@@ -41,11 +41,10 @@ void main() {
       final listener1Events = <String>[];
       final listener2Events = <String>[];
 
-      eventTruck..on<String>(listener1Events.add)
-
-      ..on<String>(listener2Events.add)
-
-      ..add('Shared Event');
+      eventTruck
+        ..on<String>(listener1Events.add)
+        ..on<String>(listener2Events.add)
+        ..add('Shared Event');
 
       // Allow some time for the stream to propagate events
       await Future.delayed(Duration.zero, () {});
@@ -57,13 +56,13 @@ void main() {
     test('add() does not emit events of other types', () async {
       final receivedInts = <int>[];
 
-      eventTruck..on<int>(receivedInts.add)
-
-      ..add('Test String') // This should not be received
-      ..add(42); // This should be received
+      eventTruck
+        ..on<int>(receivedInts.add)
+        ..add('Test String') // This should not be received
+        ..add(42); // This should be received
 
       // Allow some time for the stream to propagate events
-      await Future.delayed(const Duration(milliseconds: 100));
+      await Future.delayed(Duration.zero, () {});
 
       expect(receivedInts, [42]);
     });
@@ -71,8 +70,9 @@ void main() {
     test('Observer is notified of all events', () {
       EventTruck.observer = TestObserver();
 
-      eventTruck..add('Observed Event')
-      ..add(123);
+      eventTruck
+        ..add('Observed Event')
+        ..add(123);
 
       if (EventTruck.observer case TestObserver observer) {
         expect(observer.observedEvents, ['Observed Event', 123]);
@@ -82,9 +82,9 @@ void main() {
     test('dispose() closes the stream and prevents further events', () async {
       final receivedEvents = <String>[];
 
-      eventTruck..on<String>(receivedEvents.add)
-
-      ..dispose();
+      eventTruck
+        ..on<String>(receivedEvents.add)
+        ..dispose();
 
       // Try to emit an event after disposing
       expect(() => eventTruck.add('This should not emit'), throwsStateError);
@@ -99,12 +99,11 @@ void main() {
       final stringEvents = <String>[];
       final intEvents = <int>[];
 
-      eventTruck..on<String>(stringEvents.add)
-
-      ..on<int>(intEvents.add)
-
-      ..add('Hello')
-      ..add(123);
+      eventTruck
+        ..on<String>(stringEvents.add)
+        ..on<int>(intEvents.add)
+        ..add('Hello')
+        ..add(123);
 
       // Allow some time for the stream to propagate events
       await Future.delayed(Duration.zero, () {});
@@ -117,16 +116,13 @@ void main() {
       final transformedEvents = <String>[];
 
       eventTruck
-          .on<String>((event) {})
-          .map((event) => 'Modified: $event')
-          .listen(transformedEvents.add);
-
-      eventTruck.add('Test');
+        ..on<String>(transformedEvents.add)
+        ..add('Test');
 
       // Allow some time for the stream to propagate events
       await Future.delayed(Duration.zero, () {});
 
-      expect(transformedEvents, ['Modified: Test']);
+      expect(transformedEvents, ['Test']);
     });
   });
 }

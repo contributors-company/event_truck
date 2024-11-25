@@ -1,15 +1,35 @@
 name: event_truck
-description: A starting point for Dart libraries or applications.
+description: EventTruck is a lightweight, extensible, and type-safe event bus for managing event-driven architecture
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+
+homepage: https://www.contributors.info/repository/event_truck
+
+repository: https://github.com/contributors-company/event_truck
+
+issue_tracker: https://github.com/contributors-company/event_truck/issues
+
+topics:
+  - event-bus
+  - events
+  - stream
+  - event-handling
+  - event-listeners
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 environment:
-  sdk: ^3.5.3
+  sdk: '>=3.0.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
   # path: ^1.8.0
 
 dev_dependencies:
-  lints: ^4.0.0
-  test: ^1.24.0
+  lints:
+  test:

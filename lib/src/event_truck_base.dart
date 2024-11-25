@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:event_truck/event_truck.dart';
+
 /// A lightweight and efficient event bus for broadcasting and listening to events.
 ///
 /// This class provides an easy way to add events and listen to them
@@ -89,9 +91,11 @@ final class EventTruck<Event> {
   ///
   /// truck.add('Hello, EventTruck!');
   /// ```
-  Stream<T> on<T extends Event>(void Function(T) callback) =>
-      _streamController.stream.where((event) => event is T).cast<T>()
-        ..listen(callback);
+  StreamSubscription<T> on<T extends Event>(void Function(T) callback) =>
+      _streamController.stream
+          .where((event) => event is T)
+          .cast<T>()
+          .listen(callback);
 
   /// Emits an [event] to all registered listeners.
   ///
@@ -117,25 +121,4 @@ final class EventTruck<Event> {
   /// truck.dispose();
   /// ```
   void dispose() => _streamController.close();
-}
-
-/// Abstract class for observing events emitted by the `EventTruck`.
-///
-/// Implement this class if you want to monitor all events added to the bus.
-/// Useful for debugging, logging, or analytics purposes.
-interface class EventTrackObserver {
-  /// Called whenever an event is added to the `EventTruck`.
-  ///
-  /// - [T] is the type of the event being emitted.
-  ///
-  /// Example:
-  /// ```dart
-  /// class MyObserver implements EventTrackObserver {
-  ///   @override
-  ///   void onEvent<T>(T event) {
-  ///     print('Observed event: $event');
-  ///   }
-  /// }
-  /// ```
-  void onEvent<E, T>(EventTruck<E> trick, T event) {}
 }
