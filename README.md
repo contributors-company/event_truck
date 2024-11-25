@@ -1,6 +1,12 @@
 # **EventTruck**
 ### A Lightweight Event Bus for Efficient Event Communication
 
+![Pub Version](https://img.shields.io/pub/v/event_truck)
+![License](https://img.shields.io/github/license/contributors-company/event_truck)
+![Issues](https://img.shields.io/github/issues/contributors-company/event_truck)
+![Coverage](https://img.shields.io/codecov/c/github/contributors-company/event_truck)
+![Stars](https://img.shields.io/github/stars/contributors-company/event_truck)
+
 EventTruck is a lightweight, extensible, and type-safe event bus system for managing event-driven architecture in Dart/Flutter applications. It provides a streamlined API for broadcasting and listening to events, with optional support for event observation, debugging, and logging.
 
 ---
