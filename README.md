@@ -56,14 +56,18 @@ class TextEvent extends Event {
   TextEvent(this.text);
 }
 
-// EventTruck setup
-final eventTruck = EventTruck();
 
 // Listen to all events of type `Event` (base class or subclasses)
 eventTruck.on<Event>((event) => switch(event) {
     ClickEvent() => print(event.buttonId),
     TextEvent() => print(event.text),
 });
+
+// or
+
+eventTruck.on<ClickEvent>((event) => print(event.buttonId));
+eventTruck.on<TextEvent>((event) => print(event.text));
+
 
 
 
@@ -218,4 +222,4 @@ class DebugObserver implements EventTrackObserver {
 
 ## Codecov
 
-![Codecov](https://codecov.io/github/contributors-company/event_truck/graphs/sunburst.svg?token=FY0FEJJRDX)
+![Codecov](https://codecov.io/gh/contributors-company/event_truck/graphs/sunburst.svg?token=aKZP83tXpV)

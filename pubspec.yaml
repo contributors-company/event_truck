@@ -1,17 +1,19 @@
 name: event_truck
-description: A starting point for Dart libraries or applications.
+description: EventTruck is a lightweight, extensible, and type-safe event bus for managing event-driven architecture
 version: 1.0.0
 
-homepage: https://www.contributors.info/repository/fform
+homepage: https://www.contributors.info/repository/event_truck
 
 repository: https://github.com/contributors-company/event_truck
 
 issue_tracker: https://github.com/contributors-company/event_truck/issues
 
 topics:
-  - form
-  - validation
-  - fields
+  - event-bus
+  - events
+  - stream
+  - event-handling
+  - event-listeners
 
 platforms:
   android:
